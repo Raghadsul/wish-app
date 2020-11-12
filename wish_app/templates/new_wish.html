@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Wish App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body { 
+            padding: 30px;
+        }
+        .button {
+            float: right;
+            margin-right: 20px;
+        }
+
+        .content {
+            display: table;
+            width: 480px;
+            padding: 50px;
+            margin-left: 170px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <button type="button" class="btn button"> <a href="/logout"> Log Out </a> </button>
+    <h3 class="font-weight-bold"> Hello {{ user.first_name}} ! Make a wish!</h3>
+    <form class="content" action='/wishes/new' method="post">
+        {% csrf_token %}
+        {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <label class="col-form-label font-weight-bold"> I wish for: 
+            <input type="text" class="form-control" name="item">
+        </label>
+        <label class="col-form-label font-weight-bold"> Description 
+            <textarea class="form-control" name="desc"> </textarea>
+        </label>
+        <p> <button type="button" class="btn btn-secondary"> <a class="text-white" href="/wishes"> Cencel </a> </button> 
+            <button type="submit" class="btn btn-secondary"> Submit </button> 
+        </p>
+    </form>
+</body>
+</html>

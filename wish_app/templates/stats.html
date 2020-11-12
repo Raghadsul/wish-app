@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Wish App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body { 
+            padding: 30px;
+        }
+        .button {
+            float: right;
+            margin-right: 20px;
+        }
+
+        .content {
+            display: table;
+            width: 480px;
+            padding: 50px;
+            margin-left: 170px;
+        }
+        h3 {
+            padding-bottom: 50px;
+        }
+        h4 {
+            padding-bottom: 30px;
+        }
+        p {
+            padding-bottom: 15px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <button type="button" class="btn button"> <a href="/logout"> Log Out </a> </button>
+    <button type="button" class="btn button"> <a href="/wishes"> dashboard </a> </button>
+    <h3 class="font-weight-bold"> Hello {{ user.first_name}} ! These are your stats !</h3>
+    <h4 class="font-weight-bold"> Total wishes granded so far from all users: {{ all_granded_wishes.count }} </h4>
+    <p class="font-weight-bold"> Your granded wishes: {{ user_granded_wishes.count }} </p>
+    <p class="font-weight-bold"> Your pending wishes: {{ user_pending_wishes.count }}</p>
+</body>
+</html>
